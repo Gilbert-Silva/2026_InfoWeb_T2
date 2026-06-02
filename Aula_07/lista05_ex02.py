@@ -47,12 +47,13 @@ class Boleto:
     # no diagrama get_situacao_pagamento está como situacao
     def situacao(self): return self.__situacao_pagamento
     def __str__(self):
-        s = f"Boleto: {self.__cod_barras} - Emissão: {self.__data_emissao.strftime('%d/%m/%Y')}"
-        s += f"Vencimento: {self.__data_vencimento.strftime('%d/%m/%Y')}"
-        s += f"Valor Boleto R$ {self.__valor_boleto:.2f}"
-        s += f"Valor Pago R$ {self.__valor_pago:.2f}"
-        s += f"Pagamento: {self.__data_pagamento}"
-        s += f"{self.__situacao_pagamento}"
+        s = f"Boleto: {self.__cod_barras} - Emissão: {self.__data_emissao.strftime('%d/%m/%Y')} - "
+        s += f"Vencimento: {self.__data_vencimento.strftime('%d/%m/%Y')}\n"
+        s += f"Valor Boleto R$ {self.__valor_boleto:.2f} - "
+        s += f"Valor Pago R$ {self.__valor_pago:.2f}\n"
+        if self.__data_pagamento != None:
+            s += f"Data de pagamento: {self.__data_pagamento.strftime('%d/%m/%Y')}\n"
+        s += f"Situação: {self.__situacao_pagamento}"
         return s
     
 class BoletoUI:
@@ -88,7 +89,7 @@ class BoletoUI:
     @classmethod
     def vencidos(cls):
         for x in cls.__boletos: 
-            if x.get__situacao_pagamento() == Pagamento.EM_ABERTO and \
+            if x.get_situacao_pagamento() == Pagamento.EM_ABERTO and \
                 x.get_data_vencimento() < datetime.now(): print(x)
 
 BoletoUI.main()

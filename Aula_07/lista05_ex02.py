@@ -25,7 +25,7 @@ class Boleto:
         if emissao > datetime.now(): raise ValueError("Data não pode estar no futuro")
         self.__data_emissao = emissao
     def set_data_vencimento(self, venc):
-        if venc < datetime.now(): raise ValueError("Data não pode estar no passado")
+        #if venc < datetime.now(): raise ValueError("Data não pode estar no passado")
         self.__data_vencimento = venc
     def set_valor_boleto(self, valor):
         if valor < 0: raise ValueError("Valor não pode ser negativo")
@@ -55,5 +55,44 @@ class Boleto:
         s += f"{self.__situacao_pagamento}"
         return s
     
+class BoletoUI:
+    __boletos = []
+    @staticmethod
+    def main():
+        op = 0
+        while op != 10:
+            op = BoletoUI.menu()
+            if op == 1: BoletoUI.inserir()
+            if op == 2: BoletoUI.listar()
+            if op == 8: BoletoUI.vencidos()
+    @staticmethod
+    def menu():
+        print("---------------------------------------------")
+        print(" 1-Inserir, 2-Listar, 3-Atualizar, 4-Excluir ")
+        print(" 5-Boletos em Aberto, 6-Boletos Pagos        ")
+        print(" 7-Boletos a Vencer,  8-Boletos Vencidos     ")
+        print(" 9-Pagar Boleto,      10-Fim                 ")
+        print("---------------------------------------------")
+        return int(input("Escolha uma opção: "))
+    @classmethod
+    def inserir(cls):
+        cod = input("Informe o código com 10 dígitos: ")
+        emissao = datetime.strptime(input("Informe a data de emissão dd/mm/yyyy: "), "%d/%m/%Y")
+        venc = datetime.strptime(input("Informe a data de vencimento dd/mm/yyyy: "), "%d/%m/%Y")
+        valor = float(input("Informe o valor: "))
+        x = Boleto(cod, emissao, venc, valor)
+        cls.__boletos.append(x)
+    @classmethod
+    def listar(cls):
+        for x in cls.__boletos: print(x)
+    @classmethod
+    def vencidos(cls):
+        for x in cls.__boletos: 
+            if x.get__situacao_pagamento() == Pagamento.EM_ABERTO and \
+                x.get_data_vencimento() < datetime.now(): print(x)
+
+BoletoUI.main()
+
+
 
 

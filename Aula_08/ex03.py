@@ -30,6 +30,7 @@ def salvar():
 def abrir():
     arquivo = open("clientes.json", mode="r")
     list_dic = json.load(arquivo) 
+    arquivo.close()
     for dic in list_dic:
         x = Cliente.from_json(dic)
         print(x)

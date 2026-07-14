@@ -39,7 +39,7 @@ class UI:
 
     @staticmethod
     def cliente_atualizar():
-        for obj in Service().cliente_listar(): print(obj)
+        for obj in Service.cliente_listar(): print(obj)
         id = int(input("Informe o id do cliente a ser atualizado: "))
         nome = input("Informe o novo nome: ")
         email = input("Informe o novo e-mail: ")
@@ -48,7 +48,7 @@ class UI:
 
     @staticmethod
     def cliente_excluir():
-        for obj in Service().cliente_listar(): print(obj)
+        for obj in Service.cliente_listar(): print(obj)
         id = int(input("Informe o id do cliente a ser excluído: "))
         Service.cliente_excluir(id)
 

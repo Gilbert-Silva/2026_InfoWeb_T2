@@ -32,3 +32,8 @@ class Cliente:
     @staticmethod
     def from_json(dic):
         return Cliente(dic["id"], dic["nome"], dic["email"], dic["fone"])
+    
+# Sobrecarga de método
+
+#x = Cliente(1, "nome1", "email1", "fone1")   # Cliente.__init__()
+#y = Cliente.from_json({ "id":1, "nome":"nome1", "email":"email1", "fone":"fone1" })

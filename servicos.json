@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "descricao": "Consulta",
+    "valor": 100.0
+  },
+  {
+    "id": 2,
+    "descricao": "Radiografia do bra\u00e7o",
+    "valor": 50.0
+  }
+]

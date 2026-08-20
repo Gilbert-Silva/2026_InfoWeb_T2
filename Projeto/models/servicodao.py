@@ -8,6 +8,12 @@ class ServicoDAO:
         self.__abrir()
 
     def inserir(self, obj):
+        # gerar um novo id com o maior valor existente mais um
+        id = 0
+        if len(self.__objetos) > 0:
+            for aux in self.__objetos:
+                if aux.get_id() > id: id = aux.get_id()
+        obj.set_id(id + 1)
         self.__objetos.append(obj)
         self.__salvar()
 

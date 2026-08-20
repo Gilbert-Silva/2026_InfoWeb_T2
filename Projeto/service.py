@@ -5,8 +5,8 @@ from models.servicodao import ServicoDAO
 
 class Service:
     @staticmethod
-    def cliente_inserir(id, nome, email, fone):
-        obj = Cliente(id, nome, email, fone)
+    def cliente_inserir(nome, email, fone):
+        obj = Cliente(0, nome, email, fone)
         ClienteDAO().inserir(obj)
     @staticmethod
     def cliente_listar():
@@ -24,8 +24,8 @@ class Service:
 
 
     @staticmethod
-    def servico_inserir(id, descricao, valor):
-        obj = Servico(id, descricao, valor)
+    def servico_inserir(descricao, valor):
+        obj = Servico(0, descricao, valor)
         ServicoDAO().inserir(obj)
     @staticmethod
     def servico_listar():

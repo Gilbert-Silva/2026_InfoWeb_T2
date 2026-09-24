@@ -4,13 +4,31 @@
     "data": "03/09/2026 18:29",
     "confirmado": false,
     "id_cliente": null,
-    "id_servico": null
+    "id_servico": null,
+    "id_profissional": null
   },
   {
     "id": 2,
     "data": "03/09/2026 19:00",
     "confirmado": true,
     "id_cliente": 1,
-    "id_servico": 1
+    "id_servico": 1,
+    "id_profissional": null
+  },
+  {
+    "id": 3,
+    "data": "24/09/2026 20:00",
+    "confirmado": false,
+    "id_cliente": null,
+    "id_servico": null,
+    "id_profissional": 1
+  },
+  {
+    "id": 4,
+    "data": "24/09/2026 21:00",
+    "confirmado": false,
+    "id_cliente": 3,
+    "id_servico": 1,
+    "id_profissional": 1
   }
 ]

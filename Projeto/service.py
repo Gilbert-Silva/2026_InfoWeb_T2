@@ -71,12 +71,12 @@ class Service:
         c.set_id_profissional(id_profissional)
         HorarioDAO().inserir(c)
     @staticmethod
-    def horario_listar():
+    def horario_listar(): # select com order by
         r = HorarioDAO().listar()
         r.sort(key = lambda obj : obj.get_data())
         return r
     @staticmethod
-    def horario_listar_id(id):
+    def horario_listar_id(id): 
         return HorarioDAO().listar_id(id)
     @staticmethod
     def horario_atualizar(id, data, confirmado, id_cliente, id_servico, id_profissional):
@@ -110,6 +110,31 @@ class Service:
             Service.horario_inserir(x, False, None, None, id_profissional)
             # vá para o próximo horário
             x = x + delta
+    @staticmethod
+    def horario_visualizar_minha_agenda(id_profissional):
+        r = []
+        for h in Service.horario_listar():
+            if h.get_id_profissional() == id_profissional:
+                r.append(h)
+        r.sort (key = lambda h : h.get_data())
+        return r
+    @staticmethod
+    def horario_visualizar_meus_servicos(id_cliente):  # select com where
+        r = []
+        for h in Service.horario_listar():
+            if h.get_id_cliente() == id_cliente:
+                r.append(h)
+        r.sort (key = lambda h : h.get_data())
+        return r
+    @staticmethod
+    def horario_confirmar_servico(id_profissional):
+        r = []
+        for h in Service.horario_listar():
+            if h.get_confirmado() == False \
+            and h.get_id_cliente() != None and h.get_id_profissional() == id_profissional:
+                r.append(h)
+        r.sort (key = lambda h : h.get_data())
+        return r
 
     @staticmethod
     def profissional_inserir(nome, email, especialidade, senha):

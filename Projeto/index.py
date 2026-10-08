@@ -5,6 +5,7 @@ from templates.manterprofissionalui import ManterProfissionalUI
 from templates.manteratendimentoui import ManterAtendimentoUI
 from templates.abrircontaui import AbrirContaUI
 from templates.loginui import LoginUI
+from templates.perfiladminui import PerfilAdminUI
 from templates.perfilclienteui import PerfilClienteUI
 from templates.perfilprofissionalui import PerfilProfissionalUI
 from templates.agendarservicoui import AgendarServicoUI
@@ -36,7 +37,8 @@ class IndexUI:
         if op == "Confirmar Serviço": ConfirmarServicoUI.main()
 
     def menu_admin():
-        op = st.sidebar.selectbox("Menu", ["Clientes", "Serviços", "Horários", "Profissionais", "Atendimentos"])
+        op = st.sidebar.selectbox("Menu", ["Meus Dados", "Clientes", "Serviços", "Horários", "Profissionais", "Atendimentos"])
+        if op == "Meus Dados": PerfilAdminUI.main()
         if op == "Clientes": ManterClienteUI.main()
         if op == "Serviços": ManterServicoUI.main()
         if op == "Horários": ManterHorarioUI.main()

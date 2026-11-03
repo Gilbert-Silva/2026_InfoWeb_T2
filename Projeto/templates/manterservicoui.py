@@ -23,8 +23,11 @@ class ManterServicoUI:
         descr = st.text_input("Informe a descrição")
         valor = st.text_input("Informe o valor")
         if st.button("Inserir"):
-            Service.servico_inserir(descr, float(valor))
-            st.success("Serviço inserido com sucesso")
+            try:
+                Service.servico_inserir(descr, float(valor))
+                st.success("Serviço inserido com sucesso")
+            except ValueError:
+                st.error("Descrição ou Valor inválido")    
             time.sleep(2)
             st.rerun()
     def atualizar():

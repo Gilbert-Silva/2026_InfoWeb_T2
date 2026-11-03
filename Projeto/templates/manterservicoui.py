@@ -38,9 +38,12 @@ class ManterServicoUI:
             descr = st.text_input("Informe a nova descrição", op.get_descricao())
             valor = st.text_input("Informe o novo valor", str(op.get_valor()))
             if st.button("Atualizar"):
-                id = op.get_id()
-                Service.servico_atualizar(id, descr, float(valor))
-                st.success("Serviço atualizado com sucesso")
+                try:
+                    id = op.get_id()
+                    Service.servico_atualizar(id, descr, float(valor))
+                    st.success("Serviço atualizado com sucesso")
+                except ValueError:
+                    st.error("Descrição ou Valor inválido")    
                 time.sleep(2)
                 st.rerun()
     def excluir():

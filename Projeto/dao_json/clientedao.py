@@ -1,5 +1,5 @@
 from models.cliente import Cliente
-from models.dao import DAO
+from dao_json.dao import DAO
 import json
 
 class ClienteDAO(DAO):
